@@ -1,5 +1,7 @@
 package cn.bithumb.pro.api.service;
 
+import cn.bithumb.pro.api.model.BaseResponse;
+import cn.bithumb.pro.api.model.Config;
 import cn.bithumb.pro.api.model.market.*;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -22,5 +24,8 @@ public interface BithumbProApiService {
 
   @GET(base + "/spot/kline")
   Call<BaseResponse<Kline>> kline(@Query("symbol") String symbol);
+
+  @GET(base + "/spot/config")
+  Call<BaseResponse<Config>> config();
 
 }

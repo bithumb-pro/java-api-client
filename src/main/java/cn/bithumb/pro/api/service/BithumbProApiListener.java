@@ -4,6 +4,8 @@ import cn.bithumb.pro.api.BithumbProApiWebSocketClient;
 import cn.bithumb.pro.api.JsonUtil;
 import cn.bithumb.pro.api.constants.CodeEnum;
 import cn.bithumb.pro.api.constants.TopicEnum;
+import cn.bithumb.pro.api.model.BaseWebSocketMsg;
+import cn.bithumb.pro.api.model.BaseWebSocketResponse;
 import cn.bithumb.pro.api.model.market.*;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.sun.istack.internal.Nullable;

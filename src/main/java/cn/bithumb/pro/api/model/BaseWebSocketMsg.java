@@ -1,4 +1,4 @@
-package cn.bithumb.pro.api.model.market;
+package cn.bithumb.pro.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

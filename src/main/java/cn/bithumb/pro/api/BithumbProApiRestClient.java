@@ -1,5 +1,7 @@
 package cn.bithumb.pro.api;
 
+import cn.bithumb.pro.api.model.BaseResponse;
+import cn.bithumb.pro.api.model.Config;
 import cn.bithumb.pro.api.model.market.*;
 
 import java.util.List;
@@ -11,4 +13,6 @@ public interface BithumbProApiRestClient {
     BaseResponse<OrderBook> orderBook(String symbol);
 
     BaseResponse<List<Trade>> trades(String symbol);
+
+    BaseResponse<Config> spotConfig();
 }

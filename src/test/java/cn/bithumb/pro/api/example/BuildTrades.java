@@ -5,8 +5,8 @@ import cn.bithumb.pro.api.BithumbProApiRestClient;
 import cn.bithumb.pro.api.BithumbProApiWebSocketClient;
 import cn.bithumb.pro.api.JsonUtil;
 import cn.bithumb.pro.api.constants.TopicEnum;
-import cn.bithumb.pro.api.model.market.BaseResponse;
-import cn.bithumb.pro.api.model.market.BaseWebSocketResponse;
+import cn.bithumb.pro.api.model.BaseResponse;
+import cn.bithumb.pro.api.model.BaseWebSocketResponse;
 import cn.bithumb.pro.api.model.market.Trade;
 import cn.bithumb.pro.api.service.ResponseListener;
 
