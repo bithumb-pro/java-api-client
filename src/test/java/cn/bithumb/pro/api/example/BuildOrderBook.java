@@ -1,4 +1,4 @@
-package cn.bithumb.pro.api.test;
+package cn.bithumb.pro.api.example;
 
 import cn.bithumb.pro.api.BithumbProApiClientFactory;
 import cn.bithumb.pro.api.BithumbProApiRestClient;
@@ -14,8 +14,7 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class OrderBookTest {
-
+public class BuildOrderBook {
     private static final String ask = "ASKS";
     private static final String bid = "BIDS";
     private Long restVersion = 0L;
@@ -98,10 +97,8 @@ public class OrderBookTest {
     }
 
     public static void main(String[] args) {
-        OrderBookTest orderBookTest = new OrderBookTest();
+        BuildOrderBook buildOrderBook = new BuildOrderBook();
         String symbol = "BTC-USDT";
-        orderBookTest.buildOrderBook(symbol);
+        buildOrderBook.buildOrderBook(symbol);
     }
-
-
 }

@@ -13,6 +13,7 @@ import okhttp3.WebSocketListener;
 import okio.ByteString;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class BithumbProApiListener extends WebSocketListener {
@@ -44,14 +45,14 @@ public class BithumbProApiListener extends WebSocketListener {
         }
         if (TopicEnum.TRADE.name().equals(topic)) {
             if (CodeEnum.INIT_MSG.getCode().equals(code)) {
-                BaseWebSocketResponse1<Trade> response = JsonUtil.jsonToObj(text, new TypeReference<BaseWebSocketResponse1<Trade>>() {
+                BaseWebSocketResponse<List<Trade>> response = JsonUtil.jsonToObj(text, new TypeReference<BaseWebSocketResponse<List<Trade>>>() {
                 });
                 responseListener.onResponse(response);
             }
             if (CodeEnum.NORMAL_MSG.getCode().equals(code)) {
                 BaseWebSocketResponse<Trade> response = JsonUtil.jsonToObj(text, new TypeReference<BaseWebSocketResponse<Trade>>() {
                 });
-                BaseWebSocketResponse1<Trade> response1 = new BaseWebSocketResponse1<>();
+                BaseWebSocketResponse<List<Trade>> response1 = new BaseWebSocketResponse<>();
                 response1.setMsg(response.getMsg());
                 response1.setTimestamp(response.getTimestamp());
                 response1.setCode(response.getCode());
