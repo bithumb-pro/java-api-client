@@ -27,6 +27,6 @@ public class BithumbProApiClientFactory {
     }
 
     public BithumbProApiRestClient newRestClient() {
-        return new BithumbProProApiRestClientImpl(null, null);
+        return new BithumbProProApiRestClientImpl(this.apiKey, this.secretKey);
     }
 }

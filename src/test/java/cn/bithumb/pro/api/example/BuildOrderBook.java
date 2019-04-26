@@ -98,7 +98,7 @@ public class BuildOrderBook {
 
     public static void main(String[] args) {
         BuildOrderBook buildOrderBook = new BuildOrderBook();
-        String symbol = "BTC-USDT";
+        String symbol = "BCH-BTC";
         buildOrderBook.buildOrderBook(symbol);
     }
 }

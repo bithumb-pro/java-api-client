@@ -1,12 +1,14 @@
 package cn.bithumb.pro.api.security;
 
+import cn.bithumb.pro.api.JsonUtil;
 import cn.bithumb.pro.api.constants.BithumbProApiConstants;
 import okhttp3.*;
 import okio.Buffer;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Set;
+import java.util.TreeMap;
 
 import static cn.bithumb.pro.api.constants.BithumbProApiConstants.API_VERSION;
 
@@ -28,27 +30,25 @@ public class AuthenticationInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request original = chain.request();
         Request.Builder newRequestBuilder = original.newBuilder();
-
         boolean needAuth = original.header(BithumbProApiConstants.SECURITY_SIGN_TAG) != null;
         newRequestBuilder.removeHeader(BithumbProApiConstants.SECURITY_SIGN_TAG);
         HttpUrl.Builder builder = original.url().newBuilder();
-        builder.
-                addQueryParameter("version", API_VERSION);
         if (needAuth) {
-            String payload = original.url().query();
-            if (!StringUtils.isEmpty(payload)) {
-                String signature = HmacSHA256Signer.sign(payload, secret);
-                builder.
-                        addQueryParameter("signature", signature).
-                        addQueryParameter("apiKey", apiKey);
-//                HttpUrl signedUrl = original.url().newBuilder().
-//                        addQueryParameter("signature", signature).
-//                        addQueryParameter("apiKey", apiKey).
-//                        build();
-//                newRequestBuilder.url(signedUrl);
-            }
+            HttpUrl url = original.url();
+            Set<String> parameterNames = url.queryParameterNames();
+            TreeMap<String, Object> params = new TreeMap<>();
+            parameterNames.forEach(i -> params.put(i, url.queryParameter(i)));
+            params.put("version", API_VERSION);
+            params.put("apiKey", apiKey);
+            String signature = HmacSHA256Signer.sign(params, secret);
+            params.put("signature", signature);
+            RequestBody body = RequestBody.create(MediaType.parse(BithumbProApiConstants.MEDIA_TYPE), JsonUtil.objToJson(params));
+            newRequestBuilder.url(url).method(original.method(), body);
+        } else {
+            builder.
+                    addQueryParameter("version", API_VERSION);
+            newRequestBuilder.url(builder.build());
         }
-        newRequestBuilder.url(builder.build());
         Request newRequest = newRequestBuilder.build();
         return chain.proceed(newRequest);
     }
