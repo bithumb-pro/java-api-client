@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="531bce1f-db53-4d54-b5c7-40968634816f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/constants/KlineEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/constants/OrderSideEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/constants/OrderTypeEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/model/NewOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/model/OrderQuery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/model/account/Asset.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/cn/bithumb/pro/api/test/TestInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-client.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/BithumbProApiClientFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/BithumbProApiClientFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/BithumbProApiRestClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/BithumbProApiRestClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/constants/BithumbProApiConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/constants/BithumbProApiConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/security/AuthenticationInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/security/AuthenticationInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/security/HmacSHA256Signer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/security/HmacSHA256Signer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/service/BithumbProApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/service/BithumbProApiService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/service/BithumbProProApiRestClientImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/service/BithumbProProApiRestClientImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/cn/bithumb/pro/api/example/BuildOrderBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cn/bithumb/pro/api/example/BuildOrderBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/cn/bithumb/pro/api/test/TestConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cn/bithumb/pro/api/test/TestMarket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,13 +26,13 @@
       <file leaf-file-name="TestMarket.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/cn/bithumb/pro/api/test/TestMarket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="39" column="98" selection-start-line="39" selection-start-column="98" selection-end-line="39" selection-end-column="98" />
+            <state relative-caret-position="198">
+              <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KlineEnum.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="KlineEnum.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/constants/KlineEnum.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
@@ -126,8 +110,17 @@
       <file leaf-file-name="Kline.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/model/market/Kline.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -154,8 +147,9 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/BithumbProApiRestClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/service/BithumbProProApiRestClientImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/service/BithumbProApiService.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cn/bithumb/pro/api/test/TestMarket.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/constants/KlineEnum.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cn/bithumb/pro/api/test/TestMarket.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -211,15 +205,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java-api-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="constants" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="java-client" type="b2602c69:ProjectViewProjectNode" />
@@ -369,12 +354,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556179343459</updated>
-      <workItem from="1556179349199" duration="12579000" />
+      <workItem from="1556179349199" duration="12836000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12579000" />
+    <option name="totallyTimeSpent" value="12836000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="0" />
@@ -389,12 +374,12 @@
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="7" visible="true" weight="0.35638297" />
+      <window_info anchor="bottom" id="Run" order="7" weight="0.35638297" />
       <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32978722" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
@@ -500,13 +485,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/model/market/Kline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/constants/BithumbProApiConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -542,17 +520,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cn/bithumb/pro/api/test/TestMarket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="39" column="98" selection-start-line="39" selection-start-column="98" selection-end-line="39" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/constants/KlineEnum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cn/bithumb/pro/api/test/TestMarket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bithumb/pro/api/model/market/Kline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
