@@ -39,22 +39,22 @@ public class TestMarket {
 //        String type = KlineEnum.m1.name();
 //        Long startTime = 1556252294L;
 //        Long endTime = 1556263095L;
-        String symbol = "ETH-USDT";
+        String symbol = "RNT-USDT";
         String type = KlineEnum.m1.name();
-        Long startTime = 1546324162L;
-        Long endTime = 1556432962L;
+        Long startTime = 1555239630L;
+        Long endTime = 1555249630L;
         System.out.println(JsonUtil.objToJson(restClient.kline(symbol, type, startTime, endTime)));
     }
 
     public static void main(String[] args) {
 
-//        testConfig();
+        testConfig();
 
-//        testTicker();
+        testTicker();
 
-//        testOrderBook();
+        testOrderBook();
 
-//        testTrades();
+        testTrades();
 
         testKline();
 

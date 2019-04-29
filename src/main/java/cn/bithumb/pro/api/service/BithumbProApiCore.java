@@ -58,16 +58,14 @@ public class BithumbProApiCore {
 
     public static <T> T executeSync(Call<T> call) {
         try {
-            Response<T> response = call.execute();
+             Response<T> response = call.execute();
             if (response.isSuccessful()) {
                 return response.body();
             } else {
-//                BinanceApiError apiError = getBinanceApiError(response);
-//                throw new BinanceApiException(apiError);
+                throw new RuntimeException("Response error.");
             }
         } catch (IOException e) {
             e.printStackTrace();
-//            throw new BinanceApiException(e);
         }
         return null;
     }
