@@ -35,22 +35,26 @@ public class TestMarket {
     private static void testKline() {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance();
         BithumbProApiRestClient restClient = factory.newRestClient();
-        String symbol = "BCH-BTC";
+//        String symbol = "BCH-BTC";
+//        String type = KlineEnum.m1.name();
+//        Long startTime = 1556252294L;
+//        Long endTime = 1556263095L;
+        String symbol = "ETH-USDT";
         String type = KlineEnum.m1.name();
-        Long startTime = 1556252294L;
-        Long endTime = 1556263095L;
+        Long startTime = 1546324162L;
+        Long endTime = 1556432962L;
         System.out.println(JsonUtil.objToJson(restClient.kline(symbol, type, startTime, endTime)));
     }
 
     public static void main(String[] args) {
 
-        testConfig();
+//        testConfig();
 
-        testTicker();
+//        testTicker();
 
-        testOrderBook();
+//        testOrderBook();
 
-        testTrades();
+//        testTrades();
 
         testKline();
 

@@ -6,9 +6,9 @@ import cn.bithumb.pro.api.constants.CodeEnum;
 import cn.bithumb.pro.api.constants.TopicEnum;
 import cn.bithumb.pro.api.model.BaseWebSocketMsg;
 import cn.bithumb.pro.api.model.BaseWebSocketResponse;
-import cn.bithumb.pro.api.model.market.*;
+import cn.bithumb.pro.api.model.market.OrderBook;
+import cn.bithumb.pro.api.model.market.Trade;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.sun.istack.internal.Nullable;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
@@ -84,7 +84,7 @@ public class BithumbProApiListener extends WebSocketListener {
         System.out.println(reason);
     }
 
-    public void onFailure(WebSocket webSocket, Throwable t, @Nullable Response response) {
+    public void onFailure(WebSocket webSocket, Throwable t, Response response) {
         System.out.println(t.getMessage());
     }
 

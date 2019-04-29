@@ -10,7 +10,6 @@ import cn.bithumb.pro.api.model.market.Kline;
 import cn.bithumb.pro.api.model.market.OrderBook;
 import cn.bithumb.pro.api.model.market.Ticker;
 import cn.bithumb.pro.api.model.market.Trade;
-import com.sun.tools.corba.se.idl.IncludeGen;
 
 import java.util.List;
 import java.util.Map;
