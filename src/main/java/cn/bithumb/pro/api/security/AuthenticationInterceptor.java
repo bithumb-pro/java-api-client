@@ -40,6 +40,7 @@ public class AuthenticationInterceptor implements Interceptor {
             parameterNames.forEach(i -> params.put(i, url.queryParameter(i)));
             params.put("version", API_VERSION);
             params.put("apiKey", apiKey);
+            params.put("timestamp", System.currentTimeMillis());
             String signature = HmacSHA256Signer.sign(params, secret);
             params.put("signature", signature);
             RequestBody body = RequestBody.create(MediaType.parse(BithumbProApiConstants.MEDIA_TYPE), JsonUtil.objToJson(params));

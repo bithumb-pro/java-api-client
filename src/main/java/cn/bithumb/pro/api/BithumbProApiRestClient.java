@@ -5,6 +5,7 @@ import cn.bithumb.pro.api.model.Config;
 import cn.bithumb.pro.api.model.NewOrder;
 import cn.bithumb.pro.api.model.OrderQuery;
 import cn.bithumb.pro.api.model.account.Asset;
+import cn.bithumb.pro.api.model.account.MyTrades;
 import cn.bithumb.pro.api.model.market.Kline;
 import cn.bithumb.pro.api.model.market.OrderBook;
 import cn.bithumb.pro.api.model.market.Ticker;
@@ -76,5 +77,7 @@ public interface BithumbProApiRestClient {
      * @return
      */
     BaseResponse<Map<String, Object>> singleOrder(OrderQuery orderQuery);
+
+    BaseResponse<List<MyTrades>> myTrades(String symbol, Long startTime, Integer limit);
 
 }

@@ -4,6 +4,7 @@ import cn.bithumb.pro.api.constants.BithumbProApiConstants;
 import cn.bithumb.pro.api.model.BaseResponse;
 import cn.bithumb.pro.api.model.Config;
 import cn.bithumb.pro.api.model.account.Asset;
+import cn.bithumb.pro.api.model.account.MyTrades;
 import cn.bithumb.pro.api.model.market.Kline;
 import cn.bithumb.pro.api.model.market.OrderBook;
 import cn.bithumb.pro.api.model.market.Ticker;
@@ -19,7 +20,7 @@ import java.util.Map;
 
 public interface BithumbProApiService {
 
-    String base = "/openapi/api";
+    String base = "/openapi/v1";
     String base_spot = base + "/spot";
 
     @GET(base_spot + "/ticker")
@@ -76,6 +77,11 @@ public interface BithumbProApiService {
     @POST(base_spot + "/singleOrder")
     Call<BaseResponse<Map<String, Object>>> singleOrder(@Query("coinType") String coinType, @Query("marketType") String marketType,
                                                         @Query("orderId") String orderId);
+
+    @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
+    @POST(base_spot + "/myTrades")
+    Call<BaseResponse<List<MyTrades>>> myTrades(@Query("symbol") String symbol, @Query("startTime") Long startTime,
+                                                @Query("limit") Integer limit);
 
 }
 

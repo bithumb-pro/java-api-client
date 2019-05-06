@@ -11,8 +11,6 @@ public interface BithumbProApiConstants {
     String SECURITY_SIGN_TAG = "SIGNATURE";
     String SECURITY_SIGN_TAG_HEADER = SECURITY_SIGN_TAG + ": #";
 
-    String CONTENT_TYPE_HEADER = "content-type: application/json";
-
     String MEDIA_TYPE = "application/json; charset=utf-8";
 
     String API_VERSION = "v1.0.0";

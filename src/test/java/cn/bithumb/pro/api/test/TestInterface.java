@@ -10,8 +10,9 @@ import cn.bithumb.pro.api.model.OrderQuery;
 
 public class TestInterface {
 
-    private final static String apiKey = "40";
-    private final static String secretKey = "4dd1b9b5b24911a3be9d1e16acb5541bffe4862cfb7eef0b3a52296687aeb157";
+    private final static String apiKey = "";
+    private final static String secretKey = "";
+
 
     private static void testCreateOrder() {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
@@ -82,6 +83,15 @@ public class TestInterface {
         System.out.println(JsonUtil.objToJson(restClient.singleOrder(orderQuery)));
     }
 
+    private static void testMyTrades() {
+        BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
+        BithumbProApiRestClient restClient = factory.newRestClient();
+        String symbol = "RNT-USDT";
+        Long startTime = System.currentTimeMillis();
+        Integer limit = 100;
+        System.out.println(JsonUtil.objToJson(restClient.myTrades(symbol, startTime, limit)));
+    }
+
     public static void main(String[] args) {
 
 //        testCreateOrder();
@@ -97,6 +107,9 @@ public class TestInterface {
 //        testOpenOrders();
 
 //        testOrderList();
+
+//        testMyTrades();
+
     }
 
 }
