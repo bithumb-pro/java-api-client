@@ -16,6 +16,8 @@ import java.util.Map;
 
 public interface BithumbProApiRestClient {
 
+    BaseResponse<Long> serverTime();
+
     BaseResponse<List<Ticker>> ticker(String symbol);
 
     BaseResponse<OrderBook> orderBook(String symbol);
@@ -24,11 +26,11 @@ public interface BithumbProApiRestClient {
 
     BaseResponse<List<Kline>> kline(String symbol, String type, Long start, Long end);
 
-    BaseResponse<Config> spotConfig();
+    BaseResponse<Config> config();
 
     BaseResponse<Map<String, Object>> createOrder(NewOrder newOrder);
 
-    BaseResponse<Map<String, Object>> cancelOrder(String orderId, String coinType, String marketType);
+    BaseResponse<Map<String, Object>> cancelOrder(String orderId, String symbol);
 
     BaseResponse<List<Asset>> assets(String coinType, String assetType);
 

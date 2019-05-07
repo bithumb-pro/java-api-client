@@ -23,6 +23,9 @@ public interface BithumbProApiService {
     String base = "/openapi/v1";
     String base_spot = base + "/spot";
 
+    @GET(base + "/serverTime")
+    Call<BaseResponse<Long>> serverTime();
+
     @GET(base_spot + "/ticker")
     Call<BaseResponse<List<Ticker>>> ticker(@Query("symbol") String symbol);
 
@@ -48,8 +51,7 @@ public interface BithumbProApiService {
 
     @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
     @POST(base_spot + "/cancelOrder")
-    Call<BaseResponse<Map<String, Object>>> cancelOrder(@Query("coinType") String coinType, @Query("marketType") String marketType,
-                                                        @Query("orderId") String orderId);
+    Call<BaseResponse<Map<String, Object>>> cancelOrder(@Query("symbol") String symbol, @Query("orderId") String orderId);
 
     @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
     @POST(base_spot + "/assetList")
@@ -57,16 +59,14 @@ public interface BithumbProApiService {
 
     @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
     @POST(base_spot + "/orderDetail")
-    Call<BaseResponse<Map<String, Object>>> orderDetail(@Query("coinType") String coinType, @Query("marketType") String marketType,
-                                                        @Query("orderId") String orderId, @Query("page") Integer page,
-                                                        @Query("count") Integer count);
+    Call<BaseResponse<Map<String, Object>>> orderDetail(@Query("symbol") String symbol, @Query("orderId") String orderId,
+                                                        @Query("page") Integer page, @Query("count") Integer count);
 
     @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
     @POST(base_spot + "/orderList")
-    Call<BaseResponse<Map<String, Object>>> orderList(@Query("coinType") String coinType, @Query("marketType") String marketType,
-                                                      @Query("side") String side, @Query("status") String status,
-                                                      @Query("queryRange") String queryRange, @Query("page") Integer page,
-                                                      @Query("count") Integer count);
+    Call<BaseResponse<Map<String, Object>>> orderList(@Query("symbol") String symbol, @Query("side") String side,
+                                                      @Query("status") String status, @Query("queryRange") String queryRange,
+                                                      @Query("page") Integer page, @Query("count") Integer count);
 
     @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
     @POST(base_spot + "/openOrders")
@@ -75,8 +75,7 @@ public interface BithumbProApiService {
 
     @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
     @POST(base_spot + "/singleOrder")
-    Call<BaseResponse<Map<String, Object>>> singleOrder(@Query("coinType") String coinType, @Query("marketType") String marketType,
-                                                        @Query("orderId") String orderId);
+    Call<BaseResponse<Map<String, Object>>> singleOrder(@Query("symbol") String symbol, @Query("orderId") String orderId);
 
     @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
     @POST(base_spot + "/myTrades")

@@ -11,7 +11,7 @@ public class TestMarket {
     private static void testConfig() {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance();
         BithumbProApiRestClient restClient = factory.newRestClient();
-        System.out.println(JsonUtil.objToJson(restClient.spotConfig()));
+        System.out.println(JsonUtil.objToJson(restClient.config()));
     }
 
     private static void testTicker() {
@@ -35,10 +35,6 @@ public class TestMarket {
     private static void testKline() {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance();
         BithumbProApiRestClient restClient = factory.newRestClient();
-//        String symbol = "BCH-BTC";
-//        String type = KlineEnum.m1.name();
-//        Long startTime = 1556252294L;
-//        Long endTime = 1556263095L;
         String symbol = "RNT-USDT";
         String type = KlineEnum.m1.name();
         Long startTime = 1555239630L;
@@ -46,7 +42,15 @@ public class TestMarket {
         System.out.println(JsonUtil.objToJson(restClient.kline(symbol, type, startTime, endTime)));
     }
 
+    private static void testServerTime() {
+        BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance();
+        BithumbProApiRestClient restClient = factory.newRestClient();
+        System.out.println(JsonUtil.objToJson(restClient.serverTime()));
+    }
+
     public static void main(String[] args) {
+
+        testServerTime();
 
         testConfig();
 

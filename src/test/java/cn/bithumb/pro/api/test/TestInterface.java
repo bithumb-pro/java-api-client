@@ -10,9 +10,11 @@ import cn.bithumb.pro.api.model.OrderQuery;
 
 public class TestInterface {
 
-    private final static String apiKey = "";
-    private final static String secretKey = "";
+//    private final static String apiKey = "";
+//    private final static String secretKey = "";
 
+    private final static String apiKey = "40";
+    private final static String secretKey = "4dd1b9b5b24911a3be9d1e16acb5541bffe4862cfb7eef0b3a52296687aeb157";
 
     private static void testCreateOrder() {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
@@ -31,10 +33,9 @@ public class TestInterface {
     private static void testCancelOrder() {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
         BithumbProApiRestClient restClient = factory.newRestClient();
-        String orderId = "50504119475806208";
-        String coinType = "BCH";
-        String marketType = "BTC";
-        System.out.println(JsonUtil.objToJson(restClient.cancelOrder(orderId, coinType, marketType)));
+        String orderId = "54774088558211072";
+        String symbol = "BCH-BTC";
+        System.out.println(JsonUtil.objToJson(restClient.cancelOrder(orderId, symbol)));
     }
 
     private static void testAssets() {
@@ -49,9 +50,8 @@ public class TestInterface {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
         BithumbProApiRestClient restClient = factory.newRestClient();
         OrderQuery orderQuery = new OrderQuery();
-        orderQuery.setCoinType("BCH");
-        orderQuery.setMarketType("BTC");
-        orderQuery.setOrderId("50504119475806208");
+        orderQuery.setSymbol("BCH-BTC");
+        orderQuery.setOrderId("54806602685378560");
         System.out.println(JsonUtil.objToJson(restClient.orderDetail(orderQuery)));
     }
 
@@ -59,8 +59,7 @@ public class TestInterface {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
         BithumbProApiRestClient restClient = factory.newRestClient();
         OrderQuery orderQuery = new OrderQuery();
-        orderQuery.setCoinType("BCH");
-        orderQuery.setMarketType("BTC");
+        orderQuery.setSymbol("BCH-BTC");
         orderQuery.setStatus("traded");
         System.out.println(JsonUtil.objToJson(restClient.orders(orderQuery)));
     }
@@ -77,9 +76,8 @@ public class TestInterface {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
         BithumbProApiRestClient restClient = factory.newRestClient();
         OrderQuery orderQuery = new OrderQuery();
-        orderQuery.setOrderId("50504119475806208");
-        orderQuery.setCoinType("BCH");
-        orderQuery.setMarketType("BTC");
+        orderQuery.setOrderId("54806602685378560");
+        orderQuery.setSymbol("BCH-BTC");
         System.out.println(JsonUtil.objToJson(restClient.singleOrder(orderQuery)));
     }
 
@@ -88,7 +86,7 @@ public class TestInterface {
         BithumbProApiRestClient restClient = factory.newRestClient();
         String symbol = "RNT-USDT";
         Long startTime = System.currentTimeMillis();
-        Integer limit = 100;
+        Integer limit = 1;
         System.out.println(JsonUtil.objToJson(restClient.myTrades(symbol, startTime, limit)));
     }
 
@@ -109,6 +107,7 @@ public class TestInterface {
 //        testOrderList();
 
 //        testMyTrades();
+
 
     }
 

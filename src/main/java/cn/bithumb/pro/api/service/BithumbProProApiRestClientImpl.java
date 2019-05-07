@@ -23,6 +23,12 @@ public class BithumbProProApiRestClientImpl implements BithumbProApiRestClient {
         bithumbProApiService = BithumbProApiCore.createService(BithumbProApiService.class, apiKey, secret);
     }
 
+
+    @Override
+    public BaseResponse<Long> serverTime() {
+        return BithumbProApiCore.executeSync(bithumbProApiService.serverTime());
+    }
+
     @Override
     public BaseResponse<List<Ticker>> ticker(String symbol) {
         return BithumbProApiCore.executeSync(bithumbProApiService.ticker(symbol));
@@ -44,7 +50,7 @@ public class BithumbProProApiRestClientImpl implements BithumbProApiRestClient {
     }
 
     @Override
-    public BaseResponse<Config> spotConfig() {
+    public BaseResponse<Config> config() {
         return BithumbProApiCore.executeSync(bithumbProApiService.config());
     }
 
@@ -56,8 +62,8 @@ public class BithumbProProApiRestClientImpl implements BithumbProApiRestClient {
     }
 
     @Override
-    public BaseResponse<Map<String, Object>> cancelOrder(String orderId, String coinType, String marketType) {
-        return BithumbProApiCore.executeSync(bithumbProApiService.cancelOrder(coinType, marketType, orderId));
+    public BaseResponse<Map<String, Object>> cancelOrder(String orderId, String symbol) {
+        return BithumbProApiCore.executeSync(bithumbProApiService.cancelOrder(symbol, orderId));
     }
 
     @Override
@@ -67,14 +73,14 @@ public class BithumbProProApiRestClientImpl implements BithumbProApiRestClient {
 
     @Override
     public BaseResponse<Map<String, Object>> orderDetail(OrderQuery orderQuery) {
-        return BithumbProApiCore.executeSync(bithumbProApiService.orderDetail(orderQuery.getCoinType(), orderQuery.getMarketType(),
-                orderQuery.getOrderId(), orderQuery.getPage(), orderQuery.getCount()));
+        return BithumbProApiCore.executeSync(bithumbProApiService.orderDetail(orderQuery.getSymbol(), orderQuery.getOrderId(),
+                orderQuery.getPage(), orderQuery.getCount()));
     }
 
     @Override
     public BaseResponse<Map<String, Object>> orders(OrderQuery orderQuery) {
-        return BithumbProApiCore.executeSync(bithumbProApiService.orderList(orderQuery.getCoinType(), orderQuery.getMarketType(),
-                orderQuery.getSide(), orderQuery.getStatus(), orderQuery.getQueryRange(), orderQuery.getPage(), orderQuery.getCount()));
+        return BithumbProApiCore.executeSync(bithumbProApiService.orderList(orderQuery.getSymbol(), orderQuery.getSide(),
+                orderQuery.getStatus(), orderQuery.getQueryRange(), orderQuery.getPage(), orderQuery.getCount()));
     }
 
     @Override
@@ -84,8 +90,7 @@ public class BithumbProProApiRestClientImpl implements BithumbProApiRestClient {
 
     @Override
     public BaseResponse<Map<String, Object>> singleOrder(OrderQuery orderQuery) {
-        return BithumbProApiCore.executeSync(bithumbProApiService.singleOrder(orderQuery.getCoinType(), orderQuery.getMarketType(),
-                orderQuery.getOrderId()));
+        return BithumbProApiCore.executeSync(bithumbProApiService.singleOrder(orderQuery.getSymbol(), orderQuery.getOrderId()));
     }
 
     @Override
