@@ -87,9 +87,9 @@ public class Config {
         private String name;
         private String fullName;
         private String depositStatus;
-        private String withDrawStatus;
-        private String minWithDraw;
-        private String withDrawFee;
+        private String withdrawStatus;
+        private String minWithdraw;
+        private String withdrawFee;
         private String makerFeeRate;
         private String takerFeeRate;
 
@@ -117,28 +117,28 @@ public class Config {
             this.depositStatus = depositStatus;
         }
 
-        public String getWithDrawStatus() {
-            return withDrawStatus;
+        public String getWithdrawStatus() {
+            return withdrawStatus;
         }
 
-        public void setWithDrawStatus(String withDrawStatus) {
-            this.withDrawStatus = withDrawStatus;
+        public void setWithdrawStatus(String withdrawStatus) {
+            this.withdrawStatus = withdrawStatus;
         }
 
-        public String getMinWithDraw() {
-            return minWithDraw;
+        public String getMinWithdraw() {
+            return minWithdraw;
         }
 
-        public void setMinWithDraw(String minWithDraw) {
-            this.minWithDraw = minWithDraw;
+        public void setMinWithdraw(String minWithdraw) {
+            this.minWithdraw = minWithdraw;
         }
 
-        public String getWithDrawFee() {
-            return withDrawFee;
+        public String getWithdrawFee() {
+            return withdrawFee;
         }
 
-        public void setWithDrawFee(String withDrawFee) {
-            this.withDrawFee = withDrawFee;
+        public void setWithdrawFee(String withdrawFee) {
+            this.withdrawFee = withdrawFee;
         }
 
         public String getMakerFeeRate() {
