@@ -10,11 +10,8 @@ import cn.bithumb.pro.api.model.OrderQuery;
 
 public class TestInterface {
 
-//    private final static String apiKey = "";
-//    private final static String secretKey = "";
-
-    private final static String apiKey = "40";
-    private final static String secretKey = "4dd1b9b5b24911a3be9d1e16acb5541bffe4862cfb7eef0b3a52296687aeb157";
+   private final static String apiKey = "";
+   private final static String secretKey = "";
 
     private static void testCreateOrder() {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
