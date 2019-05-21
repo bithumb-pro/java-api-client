@@ -93,7 +93,7 @@ public class TestInterface {
 
 //        testCancelOrder();
 
-        testAssets();
+//        testAssets();
 
 //        testOrderDetail();
 
