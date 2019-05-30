@@ -32,15 +32,22 @@ public class BuildTicker {
     private final static LinkedBlockingQueue<Ticker> wsTickerQueue = new LinkedBlockingQueue<>();
     private Long rest_version;
     
-    private void buildTickers(String symbol) {
+    @SuppressWarnings("unchecked")
+	private void buildTickers(String symbol) {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance();
         BithumbProApiWebSocketClient webSocketClient = factory.newWebSocketClient();
         String topic = String.format("%s:%s", TopicEnum.TICKER, symbol);
         webSocketClient.subscribe(Collections.singletonList(topic));
-        webSocketClient.onTrades(TopicEnum.TICKER.name(), (ResponseListener<BaseWebSocketResponse<List<Ticker>>>) msg -> {
-            List<Ticker> tickers = msg.getData();
-            tickers = tickers.stream().filter(Objects::nonNull).filter(i -> symbol.equals(i.getS())).collect(Collectors.toList());
-            wsTickerQueue.addAll(tickers);
+        webSocketClient.onTrades(TopicEnum.TICKER.name(), (ResponseListener<BaseWebSocketResponse<Object>>) msg -> {
+            Object o = msg.getData();
+            if(o instanceof List) {
+            	List<Ticker> tickers = (List<Ticker>)o;
+            	tickers = tickers.stream().filter(Objects::nonNull).filter(i -> symbol.equals(i.getS())).collect(Collectors.toList());
+            	wsTickerQueue.addAll(tickers);
+            }else if (o instanceof Ticker) {
+            	Ticker ticker = (Ticker)o;
+            	wsTickerQueue.add(ticker);
+            }
         });
     }
     
@@ -49,13 +56,15 @@ public class BuildTicker {
         BithumbProApiRestClient restClient = factory.newRestClient();
         BaseResponse<List<Ticker>> restTicker = restClient.ticker(symbol);
         List<Ticker> tickers = restTicker.getData();
-        if (tickers != null && tickers.size()>0) {
+		if (tickers !=null && tickers.size() > 0) {
 			rest_version = Long.valueOf(tickers.get(0).getVer());
-			tickers = tickers.subList(0, capacity);
+			if (tickers.size() > capacity) {
+				tickers = tickers.subList(0, capacity);
+			}
 			Collections.reverse(tickers);
 			tickerQueue.addAll(tickers);
 		}
-        System.out.println("FIRST TRADES: " + JsonUtil.objToJson(tickers));
+		System.out.println("FIRST TRADES: " + JsonUtil.objToJson(tickers));
     }
     
     private void handData() {
