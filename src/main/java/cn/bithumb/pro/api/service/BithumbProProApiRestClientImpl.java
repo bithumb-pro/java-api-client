@@ -7,6 +7,8 @@ import cn.bithumb.pro.api.model.NewOrder;
 import cn.bithumb.pro.api.model.OrderQuery;
 import cn.bithumb.pro.api.model.account.Asset;
 import cn.bithumb.pro.api.model.account.MyTrades;
+import cn.bithumb.pro.api.model.contract.ContractOrderBook;
+import cn.bithumb.pro.api.model.contract.ContractTicker;
 import cn.bithumb.pro.api.model.market.Kline;
 import cn.bithumb.pro.api.model.market.OrderBook;
 import cn.bithumb.pro.api.model.market.Ticker;
@@ -97,5 +99,17 @@ public class BithumbProProApiRestClientImpl implements BithumbProApiRestClient {
     public BaseResponse<List<MyTrades>> myTrades(String symbol, Long startTime, Integer limit) {
         return BithumbProApiCore.executeSync(bithumbProApiService.myTrades(symbol, startTime, limit));
     }
+
+
+	@Override
+	public BaseResponse<ContractOrderBook> contractOrderBook(String symbol) {
+		return BithumbProApiCore.executeSync(bithumbProApiService.contractOrderBook(symbol));
+	}
+
+
+	@Override
+	public BaseResponse<ContractTicker> contractTicker(String symbol) {
+		return BithumbProApiCore.executeSync(bithumbProApiService.contractTicker(symbol));
+	}
 
 }

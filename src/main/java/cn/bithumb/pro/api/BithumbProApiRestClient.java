@@ -1,18 +1,20 @@
 package cn.bithumb.pro.api;
 
+import java.util.List;
+import java.util.Map;
+
 import cn.bithumb.pro.api.model.BaseResponse;
 import cn.bithumb.pro.api.model.Config;
 import cn.bithumb.pro.api.model.NewOrder;
 import cn.bithumb.pro.api.model.OrderQuery;
 import cn.bithumb.pro.api.model.account.Asset;
 import cn.bithumb.pro.api.model.account.MyTrades;
+import cn.bithumb.pro.api.model.contract.ContractOrderBook;
+import cn.bithumb.pro.api.model.contract.ContractTicker;
 import cn.bithumb.pro.api.model.market.Kline;
 import cn.bithumb.pro.api.model.market.OrderBook;
 import cn.bithumb.pro.api.model.market.Ticker;
 import cn.bithumb.pro.api.model.market.Trade;
-
-import java.util.List;
-import java.util.Map;
 
 public interface BithumbProApiRestClient {
 
@@ -81,5 +83,21 @@ public interface BithumbProApiRestClient {
     BaseResponse<Map<String, Object>> singleOrder(OrderQuery orderQuery);
 
     BaseResponse<List<MyTrades>> myTrades(String symbol, Long startTime, Integer limit);
+    
+    /**
+     * 合约订单簿
+     * 
+     * @param symbol
+     * @return
+     */
+    BaseResponse<ContractOrderBook> contractOrderBook(String symbol);
+    
+    /**
+     * 合约行情
+     * 
+     * @param symbol
+     * @return
+     */
+    BaseResponse<ContractTicker> contractTicker(String symbol);
 
 }

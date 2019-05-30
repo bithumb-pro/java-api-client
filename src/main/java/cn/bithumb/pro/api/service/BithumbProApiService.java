@@ -1,10 +1,15 @@
 package cn.bithumb.pro.api.service;
 
+import java.util.List;
+import java.util.Map;
+
 import cn.bithumb.pro.api.constants.BithumbProApiConstants;
 import cn.bithumb.pro.api.model.BaseResponse;
 import cn.bithumb.pro.api.model.Config;
 import cn.bithumb.pro.api.model.account.Asset;
 import cn.bithumb.pro.api.model.account.MyTrades;
+import cn.bithumb.pro.api.model.contract.ContractOrderBook;
+import cn.bithumb.pro.api.model.contract.ContractTicker;
 import cn.bithumb.pro.api.model.market.Kline;
 import cn.bithumb.pro.api.model.market.OrderBook;
 import cn.bithumb.pro.api.model.market.Ticker;
@@ -14,9 +19,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
-
-import java.util.List;
-import java.util.Map;
 
 public interface BithumbProApiService {
 
@@ -81,6 +83,24 @@ public interface BithumbProApiService {
     @POST(base_spot + "/myTrades")
     Call<BaseResponse<List<MyTrades>>> myTrades(@Query("symbol") String symbol, @Query("startTime") Long startTime,
                                                 @Query("limit") Integer limit);
+    
+    /**
+     * 合约订单簿
+     * 
+     * @param symbol
+     * @return
+     */
+    @GET(base_spot + "/contract/orderBook")
+    Call<BaseResponse<ContractOrderBook>> contractOrderBook(@Query("symbol") String symbol);
 
+    /**
+     * 合约行情
+     * 
+     * @param symbol
+     * @return
+     */
+    @GET(base_spot + "/contract/ticker")
+    Call<BaseResponse<ContractTicker>> contractTicker(@Query("symbol") String symbol);
+    
 }
 

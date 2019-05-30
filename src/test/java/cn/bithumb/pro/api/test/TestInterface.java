@@ -10,8 +10,8 @@ import cn.bithumb.pro.api.model.OrderQuery;
 
 public class TestInterface {
 
-    private final static String apiKey = "";
-    private final static String secretKey = "";
+    private final static String apiKey = "ee18c627ce39d81c4c10dcce6d962dcd";
+    private final static String secretKey = "9af5474ca96a536a8e889485e63906200e87b15475baab19427bc11f588d8184";
 
     private static void testCreateOrder() {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
@@ -86,6 +86,20 @@ public class TestInterface {
         Integer limit = 1;
         System.out.println(JsonUtil.objToJson(restClient.myTrades(symbol, startTime, limit)));
     }
+    
+    private static void testContractOrderBook() {
+        BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
+        BithumbProApiRestClient restClient = factory.newRestClient();
+        String symbol = "BCH-BTC";
+        System.out.println(JsonUtil.objToJson(restClient.contractOrderBook(symbol)));
+    }
+    
+    private static void testContractTicker() {
+        BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
+        BithumbProApiRestClient restClient = factory.newRestClient();
+        String symbol = "BCH-BTC";
+        System.out.println(JsonUtil.objToJson(restClient.contractTicker(symbol)));
+    }
 
     public static void main(String[] args) {
 
@@ -93,7 +107,7 @@ public class TestInterface {
 
 //        testCancelOrder();
 
-//        testAssets();
+       testAssets();
 
 //        testOrderDetail();
 
@@ -104,6 +118,10 @@ public class TestInterface {
 //        testOrderList();
 
 //        testMyTrades();
+    	
+//    	testContractOrderBook() ;
+    	
+//    	testContractTicker();
 
 
     }
