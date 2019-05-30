@@ -1,5 +1,11 @@
 package cn.bithumb.pro.api.service;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import cn.bithumb.pro.api.BithumbProApiWebSocketClient;
 import cn.bithumb.pro.api.JsonUtil;
 import cn.bithumb.pro.api.constants.CodeEnum;
@@ -7,16 +13,12 @@ import cn.bithumb.pro.api.constants.TopicEnum;
 import cn.bithumb.pro.api.model.BaseWebSocketMsg;
 import cn.bithumb.pro.api.model.BaseWebSocketResponse;
 import cn.bithumb.pro.api.model.market.OrderBook;
+import cn.bithumb.pro.api.model.market.Ticker;
 import cn.bithumb.pro.api.model.market.Trade;
-import com.fasterxml.jackson.core.type.TypeReference;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 import okio.ByteString;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class BithumbProApiListener extends WebSocketListener {
 
@@ -66,6 +68,13 @@ public class BithumbProApiListener extends WebSocketListener {
         }
         if (TopicEnum.ORDERBOOK.name().equals(topic)) {
             BaseWebSocketResponse<OrderBook> response = JsonUtil.jsonToObj(text, new TypeReference<BaseWebSocketResponse<OrderBook>>() {
+            });
+            responseListener.onResponse(response);
+            return;
+        }
+        //订阅ticker
+        if (TopicEnum.TICKER.name().equals(topic)) {
+            BaseWebSocketResponse<Ticker> response = JsonUtil.jsonToObj(text, new TypeReference<BaseWebSocketResponse<Ticker>>() {
             });
             responseListener.onResponse(response);
             return;

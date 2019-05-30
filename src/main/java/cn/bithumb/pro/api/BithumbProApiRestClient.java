@@ -10,6 +10,7 @@ import cn.bithumb.pro.api.model.OrderQuery;
 import cn.bithumb.pro.api.model.account.Asset;
 import cn.bithumb.pro.api.model.account.MyTrades;
 import cn.bithumb.pro.api.model.contract.req.ContractOrder;
+import cn.bithumb.pro.api.model.contract.res.ContractAccountInfo;
 import cn.bithumb.pro.api.model.contract.res.ContractInfo;
 import cn.bithumb.pro.api.model.contract.res.ContractOrderBook;
 import cn.bithumb.pro.api.model.contract.res.ContractPosition;
@@ -163,5 +164,58 @@ public interface BithumbProApiRestClient {
      * @return
      */
     BaseResponse<ContractInfo> contractInfo(String symbol);
+    
+    /**
+     * 查询用户私有合约信息
+     * 
+     * @param coin
+     * @return
+     */
+    BaseResponse<ContractAccountInfo> contractAccountInfo(String coin);
+    
+    /**
+     *  合约资产查询
+     * 
+     * @param symbol
+     * @param type
+     * @param page
+     * @param count
+     * @return
+     */
+    BaseResponse<Map<String, Object>> contractOrder(String symbol,String type,String page,String count);
+    
+
+    /**
+     * 查询用户合约的交易记录
+     * 
+     * @param symbol
+     * @param page
+     * @param count
+     * @return
+     */
+    BaseResponse<Map<String, Object>> contractTrades(String symbol,String page,String count);
+    
+    /**
+     * 提币
+     * 
+     * @param coinType
+     * @param address
+     * @param extendParam
+     * @param quantity
+     * @param mark
+     * @return
+     */
+    BaseResponse<Map<String, Object>> withdraw(String coinType,String address,String extendParam,String quantity,String mark);
+    
+    /**
+     * 内部账户资产划转
+     * 
+     * @param coinType
+     * @param quantity
+     * @param from
+     * @param to
+     * @return
+     */
+    BaseResponse<Map<String, Object>> transfer(String coinType,String quantity,String from,String to);
 
 }

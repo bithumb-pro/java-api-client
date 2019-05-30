@@ -9,6 +9,7 @@ import cn.bithumb.pro.api.model.Config;
 import cn.bithumb.pro.api.model.account.Asset;
 import cn.bithumb.pro.api.model.account.MyTrades;
 import cn.bithumb.pro.api.model.contract.req.ContractOrder;
+import cn.bithumb.pro.api.model.contract.res.ContractAccountInfo;
 import cn.bithumb.pro.api.model.contract.res.ContractInfo;
 import cn.bithumb.pro.api.model.contract.res.ContractOrderBook;
 import cn.bithumb.pro.api.model.contract.res.ContractPosition;
@@ -183,5 +184,72 @@ public interface BithumbProApiService {
     @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
     @POST(base_contract + "/info")
     Call<BaseResponse<ContractInfo>> contractInfo(@Query("symbol") String symbol);
+    
+    /**
+     * 查询用户合约账户信息
+     * 
+     * @param coin
+     * @return
+     */
+    @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
+    @POST(base_contract + "/account/info")
+    Call<BaseResponse<ContractAccountInfo>> contractAccountInfo(@Query("coin") String coin);
+    
+    /**
+     * 订单列表查询
+     * 
+     * @param symbol
+     * @param type
+     * @param page
+     * @param count
+     * @return
+     */
+    @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
+    @POST(base_contract + "/orders")
+    Call<BaseResponse<Map<String, Object>>> contractOrder(@Query("symbol") String symbol, 
+    		@Query("type") String type,@Query("page") String page, @Query("count") String count);
+    
+    /**
+     * 查询用户合约的交易记录
+     * 
+     * @param symbol
+     * @param page
+     * @param count
+     * @return
+     */
+    @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
+    @POST(base_contract + "/trades")
+    Call<BaseResponse<Map<String, Object>>> contractTrades(@Query("symbol") String symbol, 
+    		@Query("page") String page, @Query("count") String count);
+    
+    /**
+     * 提币
+     * 
+     * @param coinType
+     * @param address
+     * @param extendParam
+     * @param quantity
+     * @param mark
+     * @return
+     */
+    @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
+    @POST(base + "/withdraw")
+    Call<BaseResponse<Map<String, Object>>> withdraw(@Query("coinType") String coinType, @Query("address") String address,
+    		@Query("extendParam") String extendParam, @Query("quantity") String quantity, @Query("mark") String mark);
+    
+    /**
+     * 内部账户资产划转
+     * 
+     * @param coinType
+     * @param quantity
+     * @param from
+     * @param to
+     * @return
+     */
+    @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
+    @POST(base + "/transfer")
+    Call<BaseResponse<Map<String, Object>>> transfer(@Query("coinType") String coinType,
+    		@Query("quantity") String quantity, @Query("from") String from, @Query("to") String to);
+    
 }
 

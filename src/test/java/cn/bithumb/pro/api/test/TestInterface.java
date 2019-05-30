@@ -102,12 +102,12 @@ public class TestInterface {
         System.out.println(JsonUtil.objToJson(restClient.contractTicker(symbol)));
     }
     
-    private static void createContractOrder() {
+    private static void testCreateContractOrder() {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
         BithumbProApiRestClient restClient = factory.newRestClient();
         ContractOrder contractOrder  = new ContractOrder();
         contractOrder.setProperty("normal");
-        contractOrder.setSymbol("BTCUSD");
+        contractOrder.setSymbol("TBTCUSD");
         contractOrder.setType("limit");
         contractOrder.setAmount("10");
         contractOrder.setAmountDisplay("100");
@@ -169,6 +169,50 @@ public class TestInterface {
         System.out.println(JsonUtil.objToJson(restClient.contractInfo(symbol)));
     }
     
+    private static void testContractAccountInfo() {
+        BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
+        BithumbProApiRestClient restClient = factory.newRestClient();
+        String coin = "BCH-BTC";
+        System.out.println(JsonUtil.objToJson(restClient.contractAccountInfo(coin)));
+    }
+    
+    private static void testContractOrder() {
+        BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
+        BithumbProApiRestClient restClient = factory.newRestClient();
+        String symbol = "TBTCUSD";
+        String type = "open";
+        System.out.println(JsonUtil.objToJson(restClient.contractOrder(symbol,type,null,null)));
+    }
+    
+    private static void testContractTrades() {
+        BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
+        BithumbProApiRestClient restClient = factory.newRestClient();
+        String symbol = "TBTCUSD";
+        String page	 = "1";
+        String count = "10";
+        System.out.println(JsonUtil.objToJson(restClient.contractTrades(symbol,page,count)));
+    }
+    
+    private static void testWithdraw() {
+        BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
+        BithumbProApiRestClient restClient = factory.newRestClient();
+        String coinType = "BTC";
+        String address	 = "12345";
+        String extendParam = "10";
+        String quantity = "10";
+        String mark = "10";
+        System.out.println(JsonUtil.objToJson(restClient.withdraw(coinType,address,extendParam,quantity,mark)));
+    }
+    
+    private static void testTransfer() {
+        BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
+        BithumbProApiRestClient restClient = factory.newRestClient();
+        String coinType = "BTC";
+        String quantity	 = "1";
+        String from = "WALLET";
+        String to = "SPOT";
+        System.out.println(JsonUtil.objToJson(restClient.transfer(coinType,quantity,from,to)));
+    }
     
     
     public static void main(String[] args) {
@@ -190,22 +234,32 @@ public class TestInterface {
 //        testMyTrades();
     	
 //    	testContractOrderBook() ;
-   	
-//   	testContractTicker();
-    	
-//    	createContractOrder();
-
+//   	
+//    	testContractTicker();
+//    	
+    	testCreateContractOrder();
+//
 //    	testContractCancelOrder();
-    	
+//    	
 //    	testUpdateLeverage();
-    	
+//    	
 //    	testPosition();
-    	
+//    	
 //    	testUpdageMargin();
-    	
+//    	
 //    	testContractAsset();
+//    	
+//    	testContractInfo();
+//    	
+//    	testContractAccountInfo();
     	
-    	testContractInfo();
+//    	testContractOrder();
+//    	
+//    	testContractTrades();
+//    	
+//    	testWithdraw();
+//    	
+//    	testTransfer();
 
     }
 

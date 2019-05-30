@@ -11,6 +11,7 @@ import cn.bithumb.pro.api.model.OrderQuery;
 import cn.bithumb.pro.api.model.account.Asset;
 import cn.bithumb.pro.api.model.account.MyTrades;
 import cn.bithumb.pro.api.model.contract.req.ContractOrder;
+import cn.bithumb.pro.api.model.contract.res.ContractAccountInfo;
 import cn.bithumb.pro.api.model.contract.res.ContractInfo;
 import cn.bithumb.pro.api.model.contract.res.ContractOrderBook;
 import cn.bithumb.pro.api.model.contract.res.ContractPosition;
@@ -138,16 +139,41 @@ public class BithumbProProApiRestClientImpl implements BithumbProApiRestClient {
 		return BithumbProApiCore.executeSync(bithumbProApiService.updateMargin(symbol,updateMargin));
 	}
 
-
 	@Override
 	public BaseResponse<Map<String, Object>> contractAsset(String page, String count, String coinIdLike) {
 		return BithumbProApiCore.executeSync(bithumbProApiService.contractAsset(page, count, coinIdLike));
 	}
 
-
 	@Override
 	public BaseResponse<ContractInfo> contractInfo(String symbol) {
 		return BithumbProApiCore.executeSync(bithumbProApiService.contractInfo(symbol));
+	}
+
+	@Override
+	public BaseResponse<ContractAccountInfo> contractAccountInfo(String coin) {
+		return BithumbProApiCore.executeSync(bithumbProApiService.contractAccountInfo(coin));
+	}
+
+	@Override
+	public BaseResponse<Map<String, Object>> contractOrder(String symbol, String type, String page, String count) {
+		return BithumbProApiCore.executeSync(bithumbProApiService.contractOrder(symbol,type,page,count));
+	}
+
+	@Override
+	public BaseResponse<Map<String, Object>> contractTrades(String symbol, String page, String count) {
+		return BithumbProApiCore.executeSync(bithumbProApiService.contractTrades(symbol,page,count));
+	}
+
+	@Override
+	public BaseResponse<Map<String, Object>> withdraw(String coinType, String address, String extendParam,
+			String quantity, String mark) {
+		return BithumbProApiCore.executeSync(bithumbProApiService.withdraw(coinType, address, extendParam,
+				 quantity, mark));
+	}
+
+	@Override
+	public BaseResponse<Map<String, Object>> transfer(String coinType, String quantity, String from, String to) {
+		return BithumbProApiCore.executeSync(bithumbProApiService.transfer(coinType, quantity, from, to));
 	}
 
 }
