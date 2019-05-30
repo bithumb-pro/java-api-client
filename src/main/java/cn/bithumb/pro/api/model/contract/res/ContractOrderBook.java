@@ -1,4 +1,4 @@
-package cn.bithumb.pro.api.model.contract;
+package cn.bithumb.pro.api.model.contract.res;
 
 import java.util.ArrayList;
 import java.util.List;

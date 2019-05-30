@@ -8,13 +8,17 @@ import cn.bithumb.pro.api.model.BaseResponse;
 import cn.bithumb.pro.api.model.Config;
 import cn.bithumb.pro.api.model.account.Asset;
 import cn.bithumb.pro.api.model.account.MyTrades;
-import cn.bithumb.pro.api.model.contract.ContractOrderBook;
-import cn.bithumb.pro.api.model.contract.ContractTicker;
+import cn.bithumb.pro.api.model.contract.req.ContractOrder;
+import cn.bithumb.pro.api.model.contract.res.ContractInfo;
+import cn.bithumb.pro.api.model.contract.res.ContractOrderBook;
+import cn.bithumb.pro.api.model.contract.res.ContractPosition;
+import cn.bithumb.pro.api.model.contract.res.ContractTicker;
 import cn.bithumb.pro.api.model.market.Kline;
 import cn.bithumb.pro.api.model.market.OrderBook;
 import cn.bithumb.pro.api.model.market.Ticker;
 import cn.bithumb.pro.api.model.market.Trade;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -24,6 +28,7 @@ public interface BithumbProApiService {
 
     String base = "/openapi/v1";
     String base_spot = base + "/spot";
+    String base_contract = base + "/contract";
 
     @GET(base + "/serverTime")
     Call<BaseResponse<Long>> serverTime();
@@ -90,7 +95,7 @@ public interface BithumbProApiService {
      * @param symbol
      * @return
      */
-    @GET(base_spot + "/contract/orderBook")
+    @GET(base_contract + "/orderBook")
     Call<BaseResponse<ContractOrderBook>> contractOrderBook(@Query("symbol") String symbol);
 
     /**
@@ -99,8 +104,84 @@ public interface BithumbProApiService {
      * @param symbol
      * @return
      */
-    @GET(base_spot + "/contract/ticker")
+    @GET(base_contract + "/ticker")
     Call<BaseResponse<ContractTicker>> contractTicker(@Query("symbol") String symbol);
     
+    /**
+     * 合约下单
+     * 
+     * @param symbol
+     * @return
+     */
+    @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
+    @POST(base_contract + "/order/create")
+    Call<BaseResponse<Map<String, Object>>> createContractOrder(@Body ContractOrder contractOrder);
+    
+    /**
+     * 合约取消下单
+     * 
+     * @param orderId
+     * @return
+     */
+    @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
+    @POST(base_contract + "/order/cancel")
+    Call<BaseResponse<Map<String, Object>>> cancelContractOrder(@Query("orderId") String orderId);
+    
+    /**
+     * 修改杠杆
+     * 
+     * @param symbol
+     * @param leverage
+     * @return
+     */
+    @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
+    @POST(base_contract + "/leverage/update")
+    Call<BaseResponse<Map<String, Object>>> updateLeverage(@Query("symbol") String symbol, 
+    		@Query("leverage") String leverage);
+    
+    /**
+     * 仓位信息
+     * 
+     * @param symbol
+     * @return
+     */
+    @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
+    @POST(base_contract + "/position")
+    Call<BaseResponse<ContractPosition>> position(@Query("symbol") String symbol);
+    
+    /**
+     * 调整保证金
+     * 
+     * @param symbol
+     * @param changeAmount
+     * @return
+     */
+    @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
+    @POST(base_contract + "/margin/update")
+    Call<BaseResponse<Map<String, Object>>> updateMargin(@Query("symbol") String symbol, 
+    		@Query("changeAmount") String changeAmount);
+    
+    /**
+     * 合约资产查询
+     * 
+     * @param page
+     * @param count
+     * @param coinIdLike
+     * @return
+     */
+    @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
+    @POST(base_contract + "/asset/info")
+    Call<BaseResponse<Map<String, Object>>> contractAsset(@Query("page") String page, 
+    		@Query("count") String count,@Query("coinIdLike") String coinIdLike);
+    
+    /**
+     * 查询用户私有合约信息
+     * 
+     * @param symbol
+     * @return
+     */
+    @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
+    @POST(base_contract + "/info")
+    Call<BaseResponse<ContractInfo>> contractInfo(@Query("symbol") String symbol);
 }
 

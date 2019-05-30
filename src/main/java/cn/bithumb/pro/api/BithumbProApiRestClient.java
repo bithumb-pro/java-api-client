@@ -9,12 +9,16 @@ import cn.bithumb.pro.api.model.NewOrder;
 import cn.bithumb.pro.api.model.OrderQuery;
 import cn.bithumb.pro.api.model.account.Asset;
 import cn.bithumb.pro.api.model.account.MyTrades;
-import cn.bithumb.pro.api.model.contract.ContractOrderBook;
-import cn.bithumb.pro.api.model.contract.ContractTicker;
+import cn.bithumb.pro.api.model.contract.req.ContractOrder;
+import cn.bithumb.pro.api.model.contract.res.ContractInfo;
+import cn.bithumb.pro.api.model.contract.res.ContractOrderBook;
+import cn.bithumb.pro.api.model.contract.res.ContractPosition;
+import cn.bithumb.pro.api.model.contract.res.ContractTicker;
 import cn.bithumb.pro.api.model.market.Kline;
 import cn.bithumb.pro.api.model.market.OrderBook;
 import cn.bithumb.pro.api.model.market.Ticker;
 import cn.bithumb.pro.api.model.market.Trade;
+import retrofit2.http.Body;
 
 public interface BithumbProApiRestClient {
 
@@ -99,5 +103,65 @@ public interface BithumbProApiRestClient {
      * @return
      */
     BaseResponse<ContractTicker> contractTicker(String symbol);
+    
+    /**
+     * 合约下单
+     * 
+     * @param contractOrder
+     * @return
+     */
+    BaseResponse<Map<String, Object>> createContractOrder(@Body ContractOrder contractOrder);
+    
+    /**
+     * 合约取消订单
+     * 
+     * @param contractOrder
+     * @return
+     */
+    BaseResponse<Map<String, Object>> cancelContractOrder(String orderId);
+    
+    /**
+     *  修改杠杆
+     * 
+     * @param symbol
+     * @param leverage
+     * @return
+     */
+    BaseResponse<Map<String, Object>> updateLeverage(String symbol,String leverage);
+    
+    /**
+     *  修改杠杆
+     * 
+     * @param symbol
+     * @return
+     */
+    BaseResponse<ContractPosition> position(String symbol);
+    
+    /**
+     *  调整保证金
+     * 
+     * @param symbol
+     * @param changeAmount
+     * @return
+     */
+    BaseResponse<Map<String, Object>> updateMargin(String symbol,String changeAmount);
+    
+    /**
+     *  合约资产查询
+     * 
+     * @param page
+     * @param count
+     * @param coinIdLike
+     * @return
+     */
+    BaseResponse<Map<String, Object>> contractAsset(String page,String count,String coinIdLike);
+    
+    /**
+     * 查询用户私有合约信息
+     * 
+     * @param symbol
+     * @return
+     */
+    BaseResponse<ContractInfo> contractInfo(String symbol);
 
 }
