@@ -116,7 +116,7 @@ public interface BithumbProApiRestClient {
     /**
      * 合约取消订单
      * 
-     * @param contractOrder
+     * @param orderId
      * @return
      */
     BaseResponse<Map<String, Object>> cancelContractOrder(String orderId);
