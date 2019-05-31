@@ -7,6 +7,7 @@ import cn.bithumb.pro.api.constants.OrderSideEnum;
 import cn.bithumb.pro.api.constants.OrderTypeEnum;
 import cn.bithumb.pro.api.model.NewOrder;
 import cn.bithumb.pro.api.model.OrderQuery;
+import org.apache.commons.lang3.time.DateFormatUtils;
 
 public class TestInterface {
 
@@ -17,10 +18,10 @@ public class TestInterface {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
         BithumbProApiRestClient restClient = factory.newRestClient();
         NewOrder newOrder = new NewOrder();
-        newOrder.setSymbol("BCH-BTC");
+        newOrder.setSymbol("ETH-BTC");
         newOrder.setType(OrderTypeEnum.limit.name());
         newOrder.setSide(OrderSideEnum.buy.name());
-        newOrder.setPrice("100.001");
+        newOrder.setPrice("100");
         newOrder.setQuantity("10");
         newOrder.setTimestamp(System.currentTimeMillis());
         newOrder.setMsgNo("test");
@@ -89,11 +90,11 @@ public class TestInterface {
 
     public static void main(String[] args) {
 
-//        testCreateOrder();
+        testCreateOrder();
 
 //        testCancelOrder();
 
-//        testAssets();
+        testAssets();
 
 //        testOrderDetail();
 
@@ -104,7 +105,6 @@ public class TestInterface {
 //        testOrderList();
 
 //        testMyTrades();
-
 
     }
 
