@@ -206,7 +206,7 @@ public interface BithumbProApiService {
      */
     @Headers({BithumbProApiConstants.SECURITY_SIGN_TAG_HEADER})
     @POST(base_contract + "/orders")
-    Call<BaseResponse<Map<String, Object>>> contractOrder(@Query("symbol") String symbol, 
+    Call<BaseResponse<Map<String, Object>>> contractOrders(@Query("symbol") String symbol, 
     		@Query("type") String type,@Query("page") String page, @Query("count") String count);
     
     /**

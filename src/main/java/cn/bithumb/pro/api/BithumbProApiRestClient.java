@@ -182,7 +182,7 @@ public interface BithumbProApiRestClient {
      * @param count
      * @return
      */
-    BaseResponse<Map<String, Object>> contractOrder(String symbol,String type,String page,String count);
+    BaseResponse<Map<String, Object>> contractOrders(String symbol,String type,String page,String count);
     
 
     /**

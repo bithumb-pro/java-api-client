@@ -155,8 +155,8 @@ public class BithumbProProApiRestClientImpl implements BithumbProApiRestClient {
 	}
 
 	@Override
-	public BaseResponse<Map<String, Object>> contractOrder(String symbol, String type, String page, String count) {
-		return BithumbProApiCore.executeSync(bithumbProApiService.contractOrder(symbol,type,page,count));
+	public BaseResponse<Map<String, Object>> contractOrders(String symbol, String type, String page, String count) {
+		return BithumbProApiCore.executeSync(bithumbProApiService.contractOrders(symbol,type,page,count));
 	}
 
 	@Override

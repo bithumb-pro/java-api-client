@@ -180,8 +180,8 @@ public class TestInterface {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
         BithumbProApiRestClient restClient = factory.newRestClient();
         String symbol = "TBTCUSD";
-        String type = "open";
-        System.out.println(JsonUtil.objToJson(restClient.contractOrder(symbol,type,null,null)));
+        String type = "history";
+        System.out.println(JsonUtil.objToJson(restClient.contractOrders(symbol,type,"1","10")));
     }
     
     private static void testContractTrades() {
@@ -237,7 +237,7 @@ public class TestInterface {
 //   	
 //    	testContractTicker();
 //    	
-    	testCreateContractOrder();
+//    	testCreateContractOrder();
 //
 //    	testContractCancelOrder();
 //    	
@@ -253,10 +253,10 @@ public class TestInterface {
 //    	
 //    	testContractAccountInfo();
     	
-//    	testContractOrder();
-//    	
-//    	testContractTrades();
-//    	
+    	testContractOrder();
+    	
+    	testContractTrades();
+    	
 //    	testWithdraw();
 //    	
 //    	testTransfer();
