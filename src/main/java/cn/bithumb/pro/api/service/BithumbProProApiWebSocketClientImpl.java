@@ -114,4 +114,9 @@ public class BithumbProProApiWebSocketClientImpl implements BithumbProApiWebSock
             listener.onClosed(webSocket, code, null);
         };
     }
+
+	@Override
+	public <T> void onTicker(String topic, ResponseListener<T> responseListener) {
+		listener.addListener(topic, responseListener);
+	}
 }

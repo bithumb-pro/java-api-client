@@ -21,5 +21,14 @@ public interface BithumbProApiWebSocketClient {
     <T> void onTrades(String topic, ResponseListener<T> responseListener);
 
     void onPrice(String topic, ResponseListener responseListener);
+    
+    /**
+     * 订阅ticker
+     * 
+     * @param <T>
+     * @param topic
+     * @param responseListener
+     */
+    <T> void onTicker(String topic, ResponseListener<T> responseListener);
 
 }

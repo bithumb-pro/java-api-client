@@ -4,6 +4,7 @@ import cn.bithumb.pro.api.constants.BithumbProApiConstants;
 import cn.bithumb.pro.api.security.AuthenticationInterceptor;
 import okhttp3.Dispatcher;
 import okhttp3.OkHttpClient;
+
 import org.apache.commons.lang3.StringUtils;
 import retrofit2.Call;
 import retrofit2.Converter;

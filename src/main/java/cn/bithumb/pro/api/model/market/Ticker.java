@@ -14,6 +14,10 @@ public class Ticker {
     //币种
     private String s;
     private String ver;
+    //成交额
+    private String vol;
+    
+    private String symbol;
 
     public String getC() {
         return c;
@@ -70,4 +74,21 @@ public class Ticker {
     public void setVer(String ver) {
         this.ver = ver;
     }
+
+	public String getVol() {
+		return vol;
+	}
+
+	public void setVol(String vol) {
+		this.vol = vol;
+	}
+
+	public String getSymbol() {
+		return symbol;
+	}
+
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
+    
 }
