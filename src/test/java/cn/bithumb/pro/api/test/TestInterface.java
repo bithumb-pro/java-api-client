@@ -107,7 +107,7 @@ public class TestInterface {
         BithumbProApiRestClient restClient = factory.newRestClient();
         ContractOrder contractOrder  = new ContractOrder();
         contractOrder.setProperty("normal");
-        contractOrder.setSymbol("TBTCUSD");
+        contractOrder.setSymbol("BTCUSD");
         contractOrder.setType("limit");
         contractOrder.setAmount("10");
         contractOrder.setAmountDisplay("100");
@@ -217,41 +217,41 @@ public class TestInterface {
     
     public static void main(String[] args) {
 
-//        testCreateOrder();
+        testCreateOrder();
 
-//        testCancelOrder();
+        testCancelOrder();
 
-//        testAssets();
+        testAssets();
 
-//        testOrderDetail();
+        testOrderDetail();
 
-//        testSingleOrder();
+        testSingleOrder();
 
-//        testOpenOrders();
+        testOpenOrders();
 
-//        testOrderList();
+        testOrderList();
 
-//        testMyTrades();
+        testMyTrades();
     	
-//    	testContractOrderBook() ;
-//   	
-//    	testContractTicker();
-//    	
-//    	testCreateContractOrder();
-//
-//    	testContractCancelOrder();
-//    	
-//    	testUpdateLeverage();
-//    	
-//    	testPosition();
-//    	
-//    	testUpdageMargin();
-//    	
-//    	testContractAsset();
-//    	
-//    	testContractInfo();
-//    	
-//    	testContractAccountInfo();
+    	testContractOrderBook() ;
+   	
+    	testContractTicker();
+    	
+    	testCreateContractOrder();
+
+    	testContractCancelOrder();
+    	
+    	testUpdateLeverage();
+    	
+    	testPosition();
+    	
+    	testUpdageMargin();
+    	
+    	testContractAsset();
+    	
+    	testContractInfo();
+    	
+    	testContractAccountInfo();
     	
     	testContractOrder();
     	
