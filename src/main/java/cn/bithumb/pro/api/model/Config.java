@@ -92,6 +92,7 @@ public class Config {
         private String withdrawFee;
         private String makerFeeRate;
         private String takerFeeRate;
+        private String minTxAmt;
 
         public String getName() {
             return name;
@@ -155,6 +156,14 @@ public class Config {
 
         public void setTakerFeeRate(String takerFeeRate) {
             this.takerFeeRate = takerFeeRate;
+        }
+
+        public String getMinTxAmt() {
+            return minTxAmt;
+        }
+
+        public void setMinTxAmt(String minTxAmt) {
+            this.minTxAmt = minTxAmt;
         }
     }
 }
