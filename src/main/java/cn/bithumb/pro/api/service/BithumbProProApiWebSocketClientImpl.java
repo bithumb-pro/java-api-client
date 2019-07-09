@@ -60,7 +60,7 @@ public class BithumbProProApiWebSocketClientImpl implements BithumbProApiWebSock
     public void authKey(String apiKey, Long timestamp, String signature) {
         List<Object> args = new ArrayList<>();
         args.add(apiKey);
-        args.add(timestamp);
+        args.add(String.valueOf(timestamp));
         args.add(signature);
         String msg = handleCmd(CmdEnum.authKey.name(), args);
         webSocket.send(msg);
