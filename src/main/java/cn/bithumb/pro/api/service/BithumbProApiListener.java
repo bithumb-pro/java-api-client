@@ -67,9 +67,11 @@ public class BithumbProApiListener extends WebSocketListener {
             return;
         }
         if (TopicEnum.ORDERBOOK.name().equals(topic)) {
-            BaseWebSocketResponse<OrderBook> response = JsonUtil.jsonToObj(text, new TypeReference<BaseWebSocketResponse<OrderBook>>() {
-            });
-            responseListener.onResponse(response);
+            if (CodeEnum.NORMAL_MSG.getCode().equals(code)) {
+                BaseWebSocketResponse<OrderBook> response = JsonUtil.jsonToObj(text, new TypeReference<BaseWebSocketResponse<OrderBook>>() {
+                });
+                responseListener.onResponse(response);
+            }
             return;
         }
         //订阅ticker

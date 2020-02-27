@@ -54,10 +54,18 @@ public class BuildOrderBook {
     }
 
     private void handleData() {
+        Long first = null;
         while (true) {
             try {
                 OrderBook partOrderBook = orderBookQueue.take();
                 Long tempVer = Long.valueOf(partOrderBook.getVer());
+                if (null == first) {
+                    first = tempVer;
+                }
+                if (first > (restVersion + 1)) {
+                    System.out.println("ORDERBOOK VERSION ERROR, REST VERSION: " + restVersion + " UPDATE FIRST VERSION: " + first);
+                    return;
+                }
                 if (tempVer <= restVersion) {
                     continue;
                 }
@@ -98,7 +106,7 @@ public class BuildOrderBook {
 
     public static void main(String[] args) {
         BuildOrderBook buildOrderBook = new BuildOrderBook();
-        String symbol = "BCH-BTC";
+        String symbol = "ETH-USDT";
         buildOrderBook.buildOrderBook(symbol);
     }
 }
