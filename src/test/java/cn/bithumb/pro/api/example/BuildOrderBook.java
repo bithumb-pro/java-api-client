@@ -50,23 +50,28 @@ public class BuildOrderBook {
         depthCache.put(ask, asksMap);
         depthCache.put(bid, bidsMap);
         restVersion = Long.valueOf(orderBook.getVer());
-        System.out.println("FIRST VERSION: " + restVersion + " ORDERBOOK: " + JsonUtil.objToJson(depthCache));
+        System.out.println("FIRST REST VERSION: " + restVersion + " ORDERBOOK: " + JsonUtil.objToJson(depthCache));
     }
 
     private void handleData() {
-        Long first = null;
+        Long first = null, incr = null;
         while (true) {
             try {
                 OrderBook partOrderBook = orderBookQueue.take();
                 Long tempVer = Long.valueOf(partOrderBook.getVer());
                 if (null == first) {
-                    first = tempVer;
+                    first = incr = tempVer;
                 }
                 if (first > (restVersion + 1)) {
                     System.out.println("ORDERBOOK VERSION ERROR, REST VERSION: " + restVersion + " UPDATE FIRST VERSION: " + first);
                     return;
                 }
+                if (!(incr++).equals(tempVer)) {
+                    System.out.println("ORDERBOOK VERSION ERROR");
+                    return;
+                }
                 if (tempVer <= restVersion) {
+                    System.out.println("=====> TEMP VERSION: " + tempVer + " REST VERSION: " + restVersion);
                     continue;
                 }
                 List<String[]> asks = partOrderBook.getS();
