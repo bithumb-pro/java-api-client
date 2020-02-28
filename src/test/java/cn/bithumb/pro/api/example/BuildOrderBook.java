@@ -44,9 +44,9 @@ public class BuildOrderBook {
         }
         OrderBook orderBook = restInfo.getData();
         NavigableMap<BigDecimal, BigDecimal> bidsMap = new TreeMap<>(Comparator.reverseOrder());
-        orderBook.getB().forEach(i -> bidsMap.put(new BigDecimal(i[0]), new BigDecimal(i[1])));
+        orderBook.getB().forEach(i -> bidsMap.put(stripTrailingZeros(i[0]), stripTrailingZeros(i[1])));
         NavigableMap<BigDecimal, BigDecimal> asksMap = new TreeMap<>(BigDecimal::compareTo);
-        orderBook.getS().forEach(i -> asksMap.put(new BigDecimal(i[0]), new BigDecimal(i[1])));
+        orderBook.getS().forEach(i -> asksMap.put(stripTrailingZeros(i[0]), stripTrailingZeros(i[1])));
         depthCache.put(ask, asksMap);
         depthCache.put(bid, bidsMap);
         restVersion = Long.valueOf(orderBook.getVer());
@@ -77,19 +77,19 @@ public class BuildOrderBook {
                 List<String[]> asks = partOrderBook.getS();
                 NavigableMap<BigDecimal, BigDecimal> asksMap = depthCache.get(ask);
                 asks.forEach(i -> {
-                    if (BigDecimal.ZERO.equals(new BigDecimal(i[1]).stripTrailingZeros())) {
-                        asksMap.remove(new BigDecimal(i[0]));
+                    if (BigDecimal.ZERO.equals(stripTrailingZeros(i[1]))) {
+                        asksMap.remove(stripTrailingZeros(i[0]));
                     } else {
-                        asksMap.put(new BigDecimal(i[0]), new BigDecimal(i[1]));
+                        asksMap.put(stripTrailingZeros(i[0]), stripTrailingZeros(i[1]));
                     }
                 });
                 List<String[]> bids = partOrderBook.getB();
                 NavigableMap<BigDecimal, BigDecimal> bidsMap = depthCache.get(bid);
                 bids.forEach(i -> {
-                    if (BigDecimal.ZERO.equals(new BigDecimal(i[1]).stripTrailingZeros())) {
-                        bidsMap.remove(new BigDecimal(i[0]));
+                    if (BigDecimal.ZERO.equals(stripTrailingZeros(i[1]))) {
+                        bidsMap.remove(stripTrailingZeros(i[0]));
                     } else {
-                        bidsMap.put(new BigDecimal(i[0]), new BigDecimal(i[1]));
+                        bidsMap.put(stripTrailingZeros(i[0]), stripTrailingZeros(i[1]));
                     }
                 });
                 System.out.println("VERSION: " + tempVer +" ORDERBOOK : " + JsonUtil.objToJson(depthCache));
@@ -98,6 +98,10 @@ public class BuildOrderBook {
                 break;
             }
         }
+    }
+
+    private BigDecimal stripTrailingZeros(String numString) {
+        return new BigDecimal(numString).stripTrailingZeros();
     }
 
     private void buildOrderBook(String symbol) {
