@@ -77,7 +77,7 @@ public class BuildOrderBook {
                 List<String[]> asks = partOrderBook.getS();
                 NavigableMap<BigDecimal, BigDecimal> asksMap = depthCache.get(ask);
                 asks.forEach(i -> {
-                    if ("0".equals(i[1])) {
+                    if (BigDecimal.ZERO.equals(new BigDecimal(i[1]).stripTrailingZeros())) {
                         asksMap.remove(new BigDecimal(i[0]));
                     } else {
                         asksMap.put(new BigDecimal(i[0]), new BigDecimal(i[1]));
@@ -86,7 +86,7 @@ public class BuildOrderBook {
                 List<String[]> bids = partOrderBook.getB();
                 NavigableMap<BigDecimal, BigDecimal> bidsMap = depthCache.get(bid);
                 bids.forEach(i -> {
-                    if ("0".equals(i[1])) {
+                    if (BigDecimal.ZERO.equals(new BigDecimal(i[1]).stripTrailingZeros())) {
                         bidsMap.remove(new BigDecimal(i[0]));
                     } else {
                         bidsMap.put(new BigDecimal(i[0]), new BigDecimal(i[1]));
